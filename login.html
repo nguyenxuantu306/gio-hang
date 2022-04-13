@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <article>
+            <div class="account">
+                <form name="formdk">
+                    <h2>ĐĂNG NHẬP</h2>
+                    <div>
+                        <label>Usename</label>
+                        <input type="text" name="ho" class="txt">
+                    </div>
+                    <div>
+                        <label>Passwork</label>
+                        <input type="password" name="ten" class="txt">
+                    </div>
+                
+                <!-- <h2>
+                    ĐĂNG NHẬP
+                </h2>
+                <input type="text" placeholder="Username..." name="ho">
+                <input type="text" name="ho" class="txt">
+                <input type="password" placeholder="Password..." name="tên">
+                <input type="password" name="ten" class="txt"> -->
+                <div class="login">
+                <button type="submit" onclick=" return kiemtra()">Đăng Nhập</button>
+                
+                    <ul>
+                        <li> <a href="index.html">Trở Về</a> </li>
+                        <li> <a href="#">Quên Mật Khẩu</a> </li>
+                        <li> <a href="FormDK.html">Đăng Kí</a> </li>
+                    </ul>
+                </div>
+                </form>
+            </div>
+        </article>
+
+        <footer>
+            <div>
+                <div class="head">
+                    THÔNG TIN
+                </div>
+                <div class="info">
+                    ĐỊA CHỈ: Cao Đẳng FPT Polytechnic <br>
+                    EMAIL: nguyenxuantu306203@gmail.com <br>
+                    FACEBOOK: <a href="https://www.facebook.com/0972xxx221">Nguyễn Xuân Tú</a> <br>
+                    HOTLINE: 0972695xxx <br>
+                </div>
+        </footer>
+    </div>
+</body>
+
+</html>
+<script>
+    function kiemtra() {
+        if (!kiemtraho()) return false;
+        if (!kiemtraten()) return false
+        alert("Đăng nhập thành công");
+    }
+    function kiemtraho() {
+        var ho = document.forms["formdk"]["ho"];
+        if (ho.value == "") {
+            alert("Usename không được rỗng");
+            ho.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function kiemtraten() {
+        var ten = document.forms["formdk"]["ten"];
+        if (ten.value == '') {
+            alert("Password không được rỗng");
+            ten.focus();
+            return false;
+        }
+        return true;
+    }
+</script>

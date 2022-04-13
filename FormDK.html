@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dang ky</title>
+
+    <style>
+        [name='formdk'] {
+            width: 600px;
+            margin: auto;
+            background-color: darksalmon;
+            background-image: url(bg.jpg);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        label {
+            color: darkred;
+            width: 90px;
+            display: inline-block;
+            height: 25px;
+            top: -3px;
+            position: relative;
+        }
+
+        div {
+            padding: 8px 0;
+        }
+
+        #ntn {
+            display: inline-block;
+            width: 450px;
+            padding: 10px
+        }
+
+        #ntn input {
+            width: 50px;
+            margin-left: 10px;
+            height: 25px;
+        }
+
+        .txt {
+            width: 480px;
+            /* background-color: gold; */
+            border: none;
+            height: 25px;
+        }
+
+        span {
+            width: 120px;
+            display: inline-block;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .login {
+            margin: 0 auto;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .login ul li {
+            list-style: none;
+        }
+
+        .login ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .login a:hover {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="formdk">
+        <h2>ĐĂNG KÝ</h2>
+        <div>
+            <label>Usename</label>
+            <input type="text" name="ho" class="txt">
+        </div>
+        <div>
+            <label>Passwork</label>
+            <input type="password" name="ten" class="txt">
+        </div>
+        <div>
+            <label>Ngày sinh</label>
+            <fieldset id="ntn">
+                Ngày <input min="1" max="31" type="number" name="ngay"> Tháng <input min="1" max="12" type="number"
+                    name="thang"> Năm <input min="1950" max="2022" type="number" name="nam">
+            </fieldset>
+        </div>
+        <div>
+            <label>Giới tính</label>
+            <input type="radio" name="gioitinh" value="1">Nam
+            <input type="radio" name="gioitinh" value=0>Nữ
+        </div>
+        <div>
+            <label>Điện thoại</label>
+            <input type="text" name="dienthoai" class="txt">
+        </div>
+        <!-- <div>
+            <label>Sở thích</label>
+            <fieldset id="ntn">
+                <input type="checkbox" name="sothich"><span>Đọc sách</span>
+                <input type="checkbox" name="sothich"><span>Xem phim</span> <br>
+                <input type="checkbox" name="sothich"><span>Nghe nhạc</span>
+                <input type="checkbox" name="sothich"><span>Đá bóng</span> <br>
+                <input type="checkbox" name="sothich"><span>May vá</span>
+                <input type="checkbox" name="sothich"><span>Web</span>
+            </fieldset>
+        </div> -->
+        <div>
+            <label></label>
+            <button type="submit" onclick=" return kiemtra()">Đăng ký</button>
+            <div class="login">
+                <ul>
+                    <li> <a href="index.html">Trở Về</a> </li>
+                    <li> <a href="login.html">Đăng Nhập</a> </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    <script>
+        function kiemtra() {
+            if (!kiemtraho()) return false;
+            if (!kiemtraten()) return false;
+            if (!ktNgayThangNam()) return false;
+            if (!ktgioitinh()) return false;
+            if (!ktSDT()) return false
+            alert("Đăng kí thành công");
+            // if (!ktsothich()) return false;
+
+
+        }
+
+        function kiemtraho() {
+            var ho = document.forms["formdk"]["ho"];
+            if (ho.value == "") {
+                alert("Usename không được rỗng");
+                ho.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function kiemtraten() {
+            var ten = document.forms["formdk"]["ten"];
+            if (ten.value == '') {
+                alert("Password không được rỗng");
+                ten.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function ktNgayThangNam() {
+            var ngay = document.forms["formdk"]["ngay"];
+            if (ngay.value == "") {
+                alert("Ngày không được rỗng");
+                ngay.focus();
+                return false;
+            }
+
+            var thang = document.forms["formdk"]["thang"];
+            if (thang.value == "") {
+                alert("Tháng không được rỗng");
+                thang.focus();
+                return false;
+            }
+
+            var nam = document.forms["formdk"]["nam"];
+            if (nam.value == "") {
+                alert("Năm không được rỗng");
+                nam.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function ktgioitinh() {
+            var gioitinh = document.forms["formdk"]["gioitinh"];
+            if (!gioitinh[0].checked && !gioitinh[1].checked) {
+                alert("Chọn Nam hoặc Nữ nếu bạn không 3D");
+                gioitinh.focus();
+                return false;
+            }
+            return true;
+        }
+        // function ktsothich() {
+        //     var st = document.forms["formdk"]["sothich"];
+        //     for (var i = 0; i < st.length; i++) {
+        //         if (!st[i].checked) break;
+        //     }
+        //     if (i == st.length) {
+        //         alert("Chọn ít nhất 1 sở thích");
+        //         sothich.focus();
+        //         return false;
+        //     }
+        //     return true;
+        // }
+
+        function ktSDT() {
+            var dienthoai = document.forms["formdk"]["dienthoai"];
+            if (dienthoai.value == "") {
+                alert("Số điện thoại không được rỗng");
+                dienthoai.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
